@@ -33,11 +33,11 @@ export function DashboardScreen({ onNavigate }: DashboardScreenProps) {
 
   const services = [
     { icon: WashingMachine, label: "Laundry", color: "bg-primary", screen: "laundry" as AppScreen },
-    { icon: Wrench, label: "Maintenance", color: "bg-warning", screen: "dashboard" as AppScreen },
+    { icon: Wrench, label: "Maintenance", color: "bg-warning", screen: "maintenance" as AppScreen },
     { icon: Search, label: "Lost & Found", color: "bg-accent", screen: "lostfound" as AppScreen },
     { icon: AlertTriangle, label: "Emergency", color: "bg-emergency", screen: "emergency" as AppScreen, isEmergency: true },
-    { icon: History, label: "History", color: "bg-secondary", screen: "dashboard" as AppScreen },
-    { icon: Utensils, label: "Mess Menu", color: "bg-success", screen: "dashboard" as AppScreen },
+    { icon: History, label: "History", color: "bg-secondary", screen: "maintenance" as AppScreen },
+    { icon: Utensils, label: "Mess Menu", color: "bg-success", screen: "messmenu" as AppScreen },
   ]
 
   return (

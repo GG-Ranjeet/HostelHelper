@@ -7,8 +7,10 @@ import { LostFoundScreen } from "@/components/screens/lost-found-screen"
 import { LaundryScreen } from "@/components/screens/laundry-screen"
 import { EmergencyScreen } from "@/components/screens/emergency-screen"
 import { RewardsScreen } from "@/components/screens/rewards-screen"
+import { MaintenanceScreen } from "@/components/screens/maintenance-screen"
+import { MessMenuScreen } from "@/components/screens/mess-menu-screen"
 
-export type AppScreen = "onboarding" | "dashboard" | "lostfound" | "laundry" | "emergency" | "rewards"
+export type AppScreen = "onboarding" | "dashboard" | "lostfound" | "laundry" | "emergency" | "rewards" | "maintenance" | "messmenu"
 
 export default function HostelHelp() {
   const [currentScreen, setCurrentScreen] = useState<AppScreen>("onboarding")
@@ -83,6 +85,18 @@ export default function HostelHelp() {
               action={rewardData.action}
               onDashboard={() => navigateTo("dashboard")}
               onContinue={() => navigateTo("dashboard")}
+            />
+          )}
+          {currentScreen === "maintenance" && (
+            <MaintenanceScreen 
+              onBack={() => navigateTo("dashboard")}
+              onSubmit={() => handleReward(25, "Maintenance Request Submitted")}
+            />
+          )}
+          {currentScreen === "messmenu" && (
+            <MessMenuScreen 
+              onBack={() => navigateTo("dashboard")}
+              onSubmitFeedback={() => handleReward(15, "Mess Feedback Submitted")}
             />
           )}
         </div>

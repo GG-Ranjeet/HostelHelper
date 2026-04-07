@@ -66,7 +66,7 @@ export function MessMenuScreen({ onBack, onSubmitFeedback }: MessMenuScreenProps
   }
 
   return (
-    <div className="h-full flex flex-col bg-background">
+    <div className="flex flex-col bg-background">
       {/* Header */}
       <div className="px-5 pt-4 pb-3 flex items-center gap-4">
         <button 
@@ -103,7 +103,7 @@ export function MessMenuScreen({ onBack, onSubmitFeedback }: MessMenuScreenProps
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto px-5 pb-6">
+      <div className="px-5 pb-6">
         {/* Meal Tabs */}
         <div className="grid grid-cols-4 gap-2 mb-5">
           {(["breakfast", "lunch", "snacks", "dinner"] as const).map((meal) => (

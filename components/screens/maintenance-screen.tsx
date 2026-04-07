@@ -77,7 +77,7 @@ export function MaintenanceScreen({ onBack, onSubmit }: MaintenanceScreenProps) 
   }
 
   return (
-    <div className="h-full flex flex-col bg-background">
+    <div className="flex flex-col bg-background">
       {/* Header */}
       <div className="px-5 pt-4 pb-3 flex items-center gap-4">
         <button 
@@ -118,7 +118,7 @@ export function MaintenanceScreen({ onBack, onSubmit }: MaintenanceScreenProps) 
       </div>
 
       {view === "form" ? (
-        <div className="flex-1 overflow-y-auto px-5 pb-6">
+        <div className="px-5 pb-6">
           {/* Category Selection */}
           <div className="mb-5">
             <label className="text-sm font-medium text-foreground mb-3 block">Issue Category</label>
@@ -220,7 +220,7 @@ export function MaintenanceScreen({ onBack, onSubmit }: MaintenanceScreenProps) 
           </Button>
         </div>
       ) : (
-        <div className="flex-1 overflow-y-auto px-5 pb-6">
+        <div className="px-5 pb-6">
           {/* Active Requests */}
           <div className="mb-5">
             <h2 className="text-sm font-semibold text-foreground mb-3">Active Requests</h2>

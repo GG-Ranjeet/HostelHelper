@@ -38,7 +38,7 @@ export function EmergencyScreen({ onBack }: EmergencyScreenProps) {
   ]
 
   return (
-    <div className="h-full flex flex-col bg-background overflow-hidden relative">
+    <div className="flex flex-col bg-background relative">
       {/* Animated Background for Emergency */}
       {(isSOSActive || sosTriggered) && (
         <div className="absolute inset-0 z-0">

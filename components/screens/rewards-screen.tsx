@@ -82,7 +82,7 @@ export function RewardsScreen({ points, action, onDashboard, onContinue }: Rewar
   const progressPercent = (newTotal / 1000) * 100
 
   return (
-    <div className="h-full flex flex-col bg-background overflow-hidden relative">
+    <div className="flex flex-col bg-background relative">
       {/* Confetti Animation */}
       {showConfetti && <Confetti />}
 

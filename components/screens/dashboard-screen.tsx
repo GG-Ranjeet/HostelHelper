@@ -41,7 +41,7 @@ export function DashboardScreen({ onNavigate }: DashboardScreenProps) {
   ]
 
   return (
-    <div className="h-full flex flex-col bg-background overflow-y-auto">
+    <div className="flex flex-col bg-background">
       {/* Header */}
       <div className="px-5 pt-4 pb-3 flex items-center justify-between">
         <div className="flex items-center gap-3">

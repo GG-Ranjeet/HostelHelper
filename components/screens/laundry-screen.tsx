@@ -53,7 +53,7 @@ export function LaundryScreen({ onBack, onBook }: LaundryScreenProps) {
   }
 
   return (
-    <div className="h-full flex flex-col bg-background overflow-hidden">
+    <div className="flex flex-col bg-background">
       {/* Header */}
       <div className="px-5 pt-4 pb-3 flex items-center gap-4">
         <button onClick={onBack} className="w-10 h-10 rounded-2xl glass flex items-center justify-center">
@@ -105,7 +105,7 @@ export function LaundryScreen({ onBack, onBook }: LaundryScreenProps) {
       </div>
 
       {/* Timeline Grid */}
-      <div className="flex-1 px-5 overflow-y-auto pb-4">
+      <div className="px-5 pb-4">
         <div className="space-y-4">
           {uniqueTimes.map((time) => (
             <div key={time} className="glass rounded-2xl p-4">

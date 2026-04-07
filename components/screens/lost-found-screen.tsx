@@ -36,7 +36,7 @@ export function LostFoundScreen({ onBack, onSubmit }: LostFoundScreenProps) {
   }
 
   return (
-    <div className="h-full flex flex-col bg-background overflow-y-auto">
+    <div className="flex flex-col bg-background">
       {/* Header */}
       <div className="px-5 pt-4 pb-3 flex items-center gap-4">
         <button onClick={onBack} className="w-10 h-10 rounded-2xl glass flex items-center justify-center">

@@ -1,6 +1,5 @@
 "use client"
 
-import { useState } from "react"
 import { OnboardingScreen } from "@/components/screens/onboarding-screen"
 import { DashboardScreen } from "@/components/screens/dashboard-screen"
 import { LostFoundScreen } from "@/components/screens/lost-found-screen"
@@ -9,101 +8,75 @@ import { EmergencyScreen } from "@/components/screens/emergency-screen"
 import { RewardsScreen } from "@/components/screens/rewards-screen"
 import { MaintenanceScreen } from "@/components/screens/maintenance-screen"
 import { MessMenuScreen } from "@/components/screens/mess-menu-screen"
+import type { ReactNode } from "react"
 
 export type AppScreen = "onboarding" | "dashboard" | "lostfound" | "laundry" | "emergency" | "rewards" | "maintenance" | "messmenu"
 
 export default function HostelHelp() {
-  const [currentScreen, setCurrentScreen] = useState<AppScreen>("onboarding")
-  const [rewardData, setRewardData] = useState({ points: 0, action: "" })
-
-  const navigateTo = (screen: AppScreen) => {
-    setCurrentScreen(screen)
-  }
-
-  const handleReward = (points: number, action: string) => {
-    setRewardData({ points, action })
-    setCurrentScreen("rewards")
-  }
+  const noop = () => {}
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center p-4">
-      {/* Mobile Phone Frame */}
-      <div className="relative w-full max-w-[390px] h-[844px] bg-background rounded-[3rem] overflow-hidden shadow-2xl border-4 border-secondary">
-        {/* Status Bar */}
-        <div className="absolute top-0 left-0 right-0 z-50 flex items-center justify-between px-8 pt-4 pb-2">
-          <span className="text-xs font-medium text-foreground">9:41</span>
-          <div className="flex items-center gap-1">
-            <div className="flex items-center gap-0.5">
-              <div className="w-1 h-1 rounded-full bg-foreground" />
-              <div className="w-1 h-1.5 rounded-full bg-foreground" />
-              <div className="w-1 h-2 rounded-full bg-foreground" />
-              <div className="w-1 h-2.5 rounded-full bg-foreground" />
-            </div>
-            <svg className="w-4 h-4 text-foreground ml-1" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-            </svg>
-            <div className="w-6 h-3 rounded-sm border border-foreground ml-1 relative">
-              <div className="absolute inset-0.5 right-1 bg-primary rounded-sm" />
-              <div className="absolute -right-0.5 top-1/2 -translate-y-1/2 w-0.5 h-1.5 bg-foreground rounded-r" />
-            </div>
-          </div>
+    <div className="min-h-screen bg-background px-6 py-10">
+      <div className="mx-auto max-w-[1600px]">
+        <div className="mb-8 text-center">
+          <h1 className="text-3xl font-bold text-foreground">Hostel Help Panel Flow</h1>
+          <p className="mt-2 text-sm text-muted-foreground">
+            All product panels are shown on one desktop page in flow order.
+          </p>
         </div>
 
-        {/* Dynamic Notch */}
-        <div className="absolute top-2 left-1/2 -translate-x-1/2 w-28 h-7 bg-black rounded-full z-50" />
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3 justify-items-center">
+          <FlowPanel title="1. Onboarding">
+            <OnboardingScreen onComplete={noop} />
+          </FlowPanel>
 
-        {/* Screen Content */}
-        <div className="h-full overflow-hidden pt-12 pb-2">
-          {currentScreen === "onboarding" && (
-            <OnboardingScreen onComplete={() => navigateTo("dashboard")} />
-          )}
-          {currentScreen === "dashboard" && (
-            <DashboardScreen 
-              onNavigate={navigateTo}
+          <FlowPanel title="2. Dashboard">
+            <DashboardScreen onNavigate={noop} />
+          </FlowPanel>
+
+          <FlowPanel title="3. Lost & Found">
+            <LostFoundScreen onBack={noop} onSubmit={noop} />
+          </FlowPanel>
+
+          <FlowPanel title="4. Laundry">
+            <LaundryScreen onBack={noop} onBook={noop} />
+          </FlowPanel>
+
+          <FlowPanel title="5. Emergency">
+            <EmergencyScreen onBack={noop} />
+          </FlowPanel>
+
+          <FlowPanel title="6. Rewards">
+            <RewardsScreen
+              points={50}
+              action="Laundry Slot Booked"
+              onDashboard={noop}
+              onContinue={noop}
             />
-          )}
-          {currentScreen === "lostfound" && (
-            <LostFoundScreen 
-              onBack={() => navigateTo("dashboard")}
-              onSubmit={() => handleReward(30, "Lost Item Reported")}
-            />
-          )}
-          {currentScreen === "laundry" && (
-            <LaundryScreen 
-              onBack={() => navigateTo("dashboard")}
-              onBook={() => handleReward(50, "Laundry Slot Booked")}
-            />
-          )}
-          {currentScreen === "emergency" && (
-            <EmergencyScreen 
-              onBack={() => navigateTo("dashboard")}
-            />
-          )}
-          {currentScreen === "rewards" && (
-            <RewardsScreen 
-              points={rewardData.points}
-              action={rewardData.action}
-              onDashboard={() => navigateTo("dashboard")}
-              onContinue={() => navigateTo("dashboard")}
-            />
-          )}
-          {currentScreen === "maintenance" && (
-            <MaintenanceScreen 
-              onBack={() => navigateTo("dashboard")}
-              onSubmit={() => handleReward(25, "Maintenance Request Submitted")}
-            />
-          )}
-          {currentScreen === "messmenu" && (
-            <MessMenuScreen 
-              onBack={() => navigateTo("dashboard")}
-              onSubmitFeedback={() => handleReward(15, "Mess Feedback Submitted")}
-            />
-          )}
+          </FlowPanel>
+
+          <FlowPanel title="7. Maintenance">
+            <MaintenanceScreen onBack={noop} onSubmit={noop} />
+          </FlowPanel>
+
+          <FlowPanel title="8. Mess Menu">
+            <MessMenuScreen onBack={noop} onSubmitFeedback={noop} />
+          </FlowPanel>
         </div>
-
-        {/* Home Indicator */}
-        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-foreground/30 rounded-full" />
       </div>
     </div>
+  )
+}
+
+function FlowPanel({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <section className="mx-auto w-full max-w-[390px] rounded-3xl border border-border bg-card p-3 shadow-sm">
+      <div className="mb-4 rounded-2xl bg-secondary px-4 py-2">
+        <h2 className="text-sm font-semibold uppercase tracking-wider text-secondary-foreground">{title}</h2>
+      </div>
+      <div className="rounded-2xl border border-border bg-background p-2">
+        {children}
+      </div>
+    </section>
   )
 }

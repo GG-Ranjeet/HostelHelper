@@ -30,7 +30,7 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
   }
 
   return (
-    <div className="h-full flex flex-col bg-background relative overflow-hidden">
+    <div className="flex flex-col bg-background relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 -left-20 w-40 h-40 rounded-full bg-primary/20 blur-3xl animate-pulse" />
